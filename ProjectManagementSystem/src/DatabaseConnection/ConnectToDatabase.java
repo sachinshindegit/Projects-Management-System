@@ -25,7 +25,7 @@ public class ConnectToDatabase {
    
    public Connection getConnection(){
        try {
-           this. connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","sachin123");
+           this. connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ProjectManagementSystem","root","sachin123");
        } catch (SQLException ex) {
            Logger.getLogger(ConnectToDatabase.class.getName()).log(Level.SEVERE, null, ex);
        }
