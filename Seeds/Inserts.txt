@@ -1,0 +1,3 @@
+INSERT INTO accounts VALUES('sachin123','sachin','admin','sachin@scu.edu','9875642135');
+
+INSERT INTO login VALUES('sachin123','sachin123');
