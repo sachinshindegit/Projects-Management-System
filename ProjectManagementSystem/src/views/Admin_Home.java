@@ -6,6 +6,7 @@
 package views;
 
 import Authentication.LogOut;
+import projectManagementSystem.ProjectManagementGlobalSession;
 
 /**
  *
@@ -18,6 +19,7 @@ public class Admin_Home extends javax.swing.JPanel {
      */
     public Admin_Home() {
         initComponents();
+        ProjectManagementGlobalSession.context=null;
     }
 
     /**
@@ -38,8 +40,8 @@ public class Admin_Home extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         students = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        facultyButton = new javax.swing.JButton();
+        clientsButton = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
@@ -54,6 +56,11 @@ public class Admin_Home extends javax.swing.JPanel {
         jLabel4.setText("User: Admin on Database: FLPM");
 
         jButton8.setText("Home");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         logoutButton.setText("Log out");
         logoutButton.addActionListener(new java.awt.event.ActionListener() {
@@ -65,6 +72,7 @@ public class Admin_Home extends javax.swing.JPanel {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile_icon.PNG"))); // NOI18N
         jLabel3.setText("Profiles ");
 
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/project_icon.png"))); // NOI18N
         jLabel5.setText("Frugal Lab Projects Record");
 
         students.setText("Students");
@@ -74,9 +82,19 @@ public class Admin_Home extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setText("Faculties");
+        facultyButton.setText("Faculties");
+        facultyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                facultyButtonActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Clients");
+        clientsButton.setText("Clients");
+        clientsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clientsButtonActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Current Projects");
 
@@ -90,27 +108,33 @@ public class Admin_Home extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(133, 133, 133)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(133, 133, 133)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
+                        .addGap(18, 18, 18)
                         .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39)
+                        .addGap(33, 33, 33)
                         .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(students, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(133, 133, 133)
+                                .addComponent(jLabel3)
+                                .addGap(76, 76, 76))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(students, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(facultyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(clientsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(42, 42, 42)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,7 +151,7 @@ public class Admin_Home extends javax.swing.JPanel {
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
+                    .addComponent(facultyButton)
                     .addComponent(jButton5))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -135,7 +159,7 @@ public class Admin_Home extends javax.swing.JPanel {
                     .addComponent(jButton6))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
+                    .addComponent(clientsButton)
                     .addComponent(jButton9))
                 .addGap(34, 34, 34))
         );
@@ -148,13 +172,36 @@ public class Admin_Home extends javax.swing.JPanel {
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     private void studentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentsActionPerformed
-        projectManagementSystem.ProjectManagementGlobalSession.centralPanel.add(new Admin_Students());
+        ProjectManagementGlobalSession.centralPanel.removeAll();
+        ProjectManagementGlobalSession.context = new String("student");
+        ProjectManagementGlobalSession.centralPanel.add(new Admin_UserListPage());
+        ProjectManagementGlobalSession.centralPanel.updateUI();
     }//GEN-LAST:event_studentsActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        ProjectManagementGlobalSession.centralPanel.removeAll();
+        ProjectManagementGlobalSession.centralPanel.add(new Admin_Home());
+        ProjectManagementGlobalSession.centralPanel.updateUI();
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void facultyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facultyButtonActionPerformed
+        ProjectManagementGlobalSession.centralPanel.removeAll();
+        ProjectManagementGlobalSession.context = new String("faculty");
+        ProjectManagementGlobalSession.centralPanel.add(new Admin_UserListPage());
+        ProjectManagementGlobalSession.centralPanel.updateUI();
+    }//GEN-LAST:event_facultyButtonActionPerformed
+
+    private void clientsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clientsButtonActionPerformed
+        ProjectManagementGlobalSession.centralPanel.removeAll();
+        ProjectManagementGlobalSession.context = new String("client");
+        ProjectManagementGlobalSession.centralPanel.add(new Admin_UserListPage());
+        ProjectManagementGlobalSession.centralPanel.updateUI();
+    }//GEN-LAST:event_clientsButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton clientsButton;
+    private javax.swing.JButton facultyButton;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;

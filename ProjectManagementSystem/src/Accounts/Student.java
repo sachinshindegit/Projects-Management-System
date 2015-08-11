@@ -10,13 +10,21 @@ package Accounts;
  * @author Sachin Shinde
  */
 // This class defines student account
-public class Student implements Account{
+public class Student implements Account, LoggedInUser{
     private String userId;
     private String userName;
     private String userRole;
     private String userEmail;
     private String userPhone;
-
+    
+    
+    public Student(String userId, String userName, String userRole, String userEmail, String userPhone){
+        this.setUserId(userId);
+        this.setUserName(userName);
+        this.setUserRole(userRole);
+        this.setUserPhone(userPhone);
+        this.setUserEmail(userEmail);
+    }
     public String getUserId() {
         return userId;
     }

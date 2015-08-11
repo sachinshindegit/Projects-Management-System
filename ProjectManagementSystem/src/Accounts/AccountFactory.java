@@ -15,23 +15,27 @@ import java.util.logging.Logger;
 
 // This class acts as a factory for creating user accounts implementing the factory method design pattern
 public class AccountFactory {
-    
+    String userId, userName, userRole, userEmail, userPhone;
+    public AccountFactory(String userId, String userName, String userRole, String userEmail, String userPhone){
+        this.userId=userId;
+        this.userName=userName;
+        this.userRole=userRole;
+        this.userEmail=userEmail;
+        this.userPhone=userPhone;
+    }
     // This method creates user accounts
     public Account getAccount(String accountType){
       if(accountType == null){
          return null;
       }		
-      if(accountType.equalsIgnoreCase("admin")){
-         return new Admin();
-         
-      } else if(accountType.equalsIgnoreCase("client")){
-         return new Client();
+      if(accountType.equalsIgnoreCase("client")){
+         return new Client(userId, userName, userRole, userEmail, userPhone);
          
       } else if(accountType.equalsIgnoreCase("faculty")){
-         return new Faculty();
+         return new Faculty(userId, userName, userRole, userEmail, userPhone);
          
       }else if(accountType.equalsIgnoreCase("student")){
-         return new Student();
+         return new Student(userId, userName, userRole, userEmail, userPhone);
       }else{
           // For future extensibility
           try {

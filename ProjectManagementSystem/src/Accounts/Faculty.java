@@ -10,13 +10,22 @@ package Accounts;
  * @author Sachin Shinde
  */
 // This class defines faculty account
-public class Faculty implements Account{
+public class Faculty implements Account, LoggedInUser{
     private String userId;
     private String userName;
     private String userRole;
     private String userEmail;
     private String userPhone;
 
+    
+    public Faculty(String userId, String userName, String userRole, String userEmail, String userPhone){
+        this.setUserId(userId);
+        this.setUserName(userName);
+        this.setUserRole(userRole);
+        this.setUserPhone(userPhone);
+        this.setUserEmail(userEmail);
+    }
+    
     public String getUserId() {
         return userId;
     }

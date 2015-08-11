@@ -11,13 +11,20 @@ package Accounts;
  */
 
 // This class defines client account
-public class Client implements Account{
+public class Client implements Account, LoggedInUser{
     private String userId;
     private String userName;
     private String userRole;
     private String userEmail;
     private String userPhone;
-
+    
+    public Client(String userId, String userName, String userRole, String userEmail, String userPhone){
+        this.setUserId(userId);
+        this.setUserName(userName);
+        this.setUserRole(userRole);
+        this.setUserPhone(userPhone);
+        this.setUserEmail(userEmail);
+    }
     public String getUserId() {
         return userId;
     }

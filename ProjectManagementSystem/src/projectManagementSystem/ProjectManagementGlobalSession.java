@@ -4,7 +4,8 @@ package projectManagementSystem;
 import java.awt.Color;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
-import userActionsImplementor.LoggedInUser;
+import Accounts.LoggedInUser;
+import javax.naming.Context;
 import views.IDisplayMessage;
 import views.Login_Page;
 import views.MainWindow;
@@ -21,7 +22,7 @@ public class ProjectManagementGlobalSession {
     public static MainWindow window;
     public static JPanel centralPanel;
     public static LoggedInUser loggedInUser; // To hold the logged in user details
-
+    public static Object context;
     
     
     public ProjectManagementGlobalSession(){

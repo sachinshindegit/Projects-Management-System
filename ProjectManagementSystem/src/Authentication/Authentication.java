@@ -15,7 +15,6 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import projectManagementSystem.*;
-import userActionsImplementor.AdminUser;
 import views.Admin_Home;
 import views.IDisplayMessage;
 
@@ -52,11 +51,13 @@ public class Authentication {
         String sql="";
         try {
             // To check if the user id and password are valid
-            sql = "SELECT * FROM login WHERE user_id='"+this.userId+"' AND password='"+this.password+"'";
+            sql = "SELECT * FROM login WHERE user_id='"+this.userId+"'";
             preparedStatement = connection.prepareStatement(sql);
             resultSetLogin = preparedStatement.executeQuery();
             while(resultSetLogin.next()){
-                
+                if(!resultSetLogin.getNString("password").toString().equals(this.password)){
+                    break;
+                }
                 // To fetch account details
                 sql="SELECT * FROM accounts WHERE user_id='"+this.userId+"'";
                 preparedStatement = connection.prepareStatement(sql);
@@ -89,7 +90,7 @@ public class Authentication {
                     admin.setUserRole(resultSetAccount.getNString("user_role"));
                     
                     // Setting the loggedInUser global variable
-                    ProjectManagementGlobalSession.loggedInUser = new AdminUser(admin);
+                    ProjectManagementGlobalSession.loggedInUser = admin;
                     
                     // Setting the new page
                     ProjectManagementGlobalSession.centralPanel.add(new Admin_Home());
