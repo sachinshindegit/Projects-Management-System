@@ -1,3 +1,43 @@
+********************* Admin start************************************************************
 INSERT INTO accounts VALUES('sachin123','sachin','admin','sachin@scu.edu','9875642135');
-
 INSERT INTO login VALUES('sachin123','sachin123');
+********************* Admin End************************************************************
+********************* Student start************************************************************
+INSERT INTO accounts VALUES('sam12','Sam','student','sam@scu.edu','988452135');
+INSERT INTO login VALUES('sam12','sam12');
+INSERT INTO accounts VALUES('John12','john','student','john12@scu.edu','445852135');
+INSERT INTO login VALUES('john12','john12');
+INSERT INTO accounts VALUES('tully123','Tully Mande','student','tully123@scu.edu','988452135');
+INSERT INTO login VALUES('tully123','tully123');
+INSERT INTO accounts VALUES('Zen678','Zen Timber','student','Zen678@scu.edu','976492135');
+INSERT INTO login VALUES('zen678','zen678');
+INSERT INTO accounts VALUES('Sayid','Sayid Sapri','student','sayid@scu.edu','475892135');
+INSERT INTO login VALUES('sayid','sayid');
+INSERT INTO accounts VALUES('Shanon12','Shanon Rodrigues','student','shanon@scu.edu','487552135');
+INSERT INTO login VALUES('shanon12','shanon12');
+INSERT INTO accounts VALUES('Kate12','Kate Damera','student','kate@scu.edu','789552135');
+INSERT INTO login VALUES('kate12','kate12');
+INSERT INTO accounts VALUES('Malli12','Mallika Namez','student','malli@scu.edu','487458735');
+INSERT INTO login VALUES('malli12','malli12');
+INSERT INTO accounts VALUES('Terry12','Terry Dsouza','student','Terry@scu.edu','487698135');
+INSERT INTO login VALUES('terry12','terry12');
+********************* Student End************************************************************
+********************* faculty start************************************************************
+INSERT INTO accounts VALUES('moazzini12','Moazzini','faculty','Moazzini12@scu.edu','988452135');
+INSERT INTO login VALUES('moazzini12','moazzini12');
+INSERT INTO accounts VALUES('holiday12','holiday','faculty','holiday12@scu.edu','445852135');
+INSERT INTO login VALUES('holiday12','holiday12');
+INSERT INTO accounts VALUES('wang123','wang Mande','faculty','wang123@scu.edu','988452135');
+INSERT INTO login VALUES('wang123','wang123');
+INSERT INTO accounts VALUES('zakky678','zakky Timber','faculty','zakky678@scu.edu','976492135');
+INSERT INTO login VALUES('zakky678','zakky678');
+INSERT INTO accounts VALUES('maggie','maggie Sapri','faculty','maggie@scu.edu','475892135');
+INSERT INTO login VALUES('maggie','maggie');
+INSERT INTO accounts VALUES('dom12','Dom Rodrigues','faculty','dom@scu.edu','487552135');
+INSERT INTO login VALUES('dom12','dom12');
+INSERT INTO accounts VALUES('chaitali12','chaitali Damera','faculty','chaitali12@scu.edu','789552135');
+INSERT INTO login VALUES('chaitali12','chaitali12');
+********************* faculty end************************************************************
+
+
+
