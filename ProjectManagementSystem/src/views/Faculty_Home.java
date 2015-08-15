@@ -5,15 +5,21 @@
  */
 package views;
 
+import Accounts.Account;
 import Authentication.LogOut;
 import DatabaseConnection.ConnectToDatabase;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import projectBuilder.Project;
 import projectManagementSystem.ProjectManagementGlobalSession;
 
 /**
@@ -155,6 +161,11 @@ public class Faculty_Home extends javax.swing.JPanel {
         });
 
         viewProjectDetailsButton.setText("View Project Details");
+        viewProjectDetailsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewProjectDetailsButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -247,6 +258,59 @@ public class Faculty_Home extends javax.swing.JPanel {
         ProjectManagementGlobalSession.centralPanel.updateUI();
     }//GEN-LAST:event_homeButtonActionPerformed
 
+    private void viewProjectDetailsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewProjectDetailsButtonActionPerformed
+        if(validateSearchItem()){
+            ProjectManagementGlobalSession.centralPanel.removeAll();
+            ProjectManagementGlobalSession.centralPanel.add(new Faculty_Project_Update());
+            ProjectManagementGlobalSession.centralPanel.updateUI();
+        }
+    }//GEN-LAST:event_viewProjectDetailsButtonActionPerformed
+    
+    private boolean validateSearchItem(){
+        if(projectIdViewDetails.getText().trim().length() < 1){
+            JOptionPane.showMessageDialog(this, "Enter project Id to be searched");
+            return false;
+        }
+            PreparedStatement preparedStatement=null;
+            ResultSet resultSetLogin = null;
+            boolean loginFlag=false;
+            Account loggedInUser=null;
+            ConnectToDatabase connectToDatabase = new ConnectToDatabase();
+            Connection connection = connectToDatabase.getConnection();
+            String sql="";
+            
+            
+            try {
+                // To check if the project Id already exists
+                sql = "SELECT * FROM project WHERE project_id='"+projectIdViewDetails.getText().trim()+"' and faculty_id='"+ProjectManagementGlobalSession.user_id+"'";
+                preparedStatement = connection.prepareStatement(sql);
+                resultSetLogin = preparedStatement.executeQuery();
+                Project project = new Project();
+                while(resultSetLogin.next()){
+                    loginFlag=true;
+                    project.setProjectId(resultSetLogin.getNString("project_id"));
+                    project.setProjectName(resultSetLogin.getNString("project_name"));
+                    project.setClientId(resultSetLogin.getNString("client_id"));
+                    project.setProjectDescription(resultSetLogin.getNString("project_description"));
+                        project.setStartDate(resultSetLogin.getDate("start_date"));
+                        project.setEndDate(resultSetLogin.getDate("start_date"));
+                    project.setFacultyId(ProjectManagementGlobalSession.user_id);
+                    ProjectManagementGlobalSession.context = project;
+
+                    
+                }
+
+                if(loginFlag){
+                    return true;
+                }
+                else{
+                    JOptionPane.showMessageDialog(this, "Project Id is invalid or you do not have permissions to access this project details");
+                }
+                } catch (SQLException ex) {
+                Logger.getLogger(Admin_NewAccount.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            return false;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton createNewProjectButton;

@@ -255,6 +255,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="View Project Details"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewProjectDetailsButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="displayMessage">
     </Component>
