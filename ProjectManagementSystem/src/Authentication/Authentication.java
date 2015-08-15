@@ -7,7 +7,9 @@ package Authentication;
 
 import Accounts.Account;
 import Accounts.Admin;
+import Accounts.Faculty;
 import DatabaseConnection.ConnectToDatabase;
+import views.Faculty_Home;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -106,7 +108,19 @@ public class Authentication {
                 // If the role is admin then navigate to faculty screen
                 // faculty
                 if(ProjectManagementGlobalSession.user_role.equalsIgnoreCase("faculty")){
+                    Faculty faculty = new Faculty(resultSetAccount.getNString("user_id"), 
+                            resultSetAccount.getNString("user_name"), 
+                            resultSetAccount.getNString("user_role"), 
+                            resultSetAccount.getNString("user_email"), 
+                            resultSetAccount.getNString("user_phone"));
                     
+                    
+                    // Setting the loggedInUser global variable
+                    ProjectManagementGlobalSession.loggedInUser = faculty;
+                    
+                    // Setting the new page
+                    ProjectManagementGlobalSession.centralPanel.add(new Faculty_Home());
+                    ProjectManagementGlobalSession.centralPanel.updateUI();
                 }
                 
                 // If the role is admin then navigate to client screen
