@@ -45,7 +45,8 @@ public class Add_members extends javax.swing.JPanel {
             String sql="";
 
             // To check if the user id already exists
-            sql = "SELECT * FROM accounts WHERE user_role='student'";
+            sql = "SELECT a.user_id,a.user_name,a.user_email,a.user_phone FROM accounts a WHERE a.user_role='student' and a.user_id NOT IN (SELECT p.user_id "
+                    + "FROM project_members p WHERE p.project_id='"+facultyActions.getProjectId()+"')";
             model=(DefaultTableModel)studentListTable.getModel();
             model.setRowCount(0);
             
@@ -53,8 +54,6 @@ public class Add_members extends javax.swing.JPanel {
                 preparedStatement = connection.prepareStatement(sql);
                 resultSetLogin = preparedStatement.executeQuery();
                 while(resultSetLogin.next()){
-                    
-                        
                         studentIdList.add(resultSetLogin.getNString("user_id"));
                         //studentIdList.add(resultSetLogin.getNString("user_id"));
                         String[] s={resultSetLogin.getNString("user_id"),resultSetLogin.getNString("user_name"),resultSetLogin.getNString("user_email"),resultSetLogin.getNString("user_phone")};
@@ -239,9 +238,6 @@ public class Add_members extends javax.swing.JPanel {
         addMemberButton.setEnabled(false);
         removeAddedMemberButton.setEnabled(false);
         confirmMembersButton.setEnabled(false);
-        ProjectManagementGlobalSession.centralPanel.removeAll();
-        ProjectManagementGlobalSession.centralPanel.add(new Faculty_Home());
-        ProjectManagementGlobalSession.centralPanel.updateUI();
     }//GEN-LAST:event_confirmMembersButtonActionPerformed
     // Mehtod to check whether student id is already added in the list or not
     private boolean validateStudentId(String id){

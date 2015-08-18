@@ -7,7 +7,7 @@ package views;
 
 import Accounts.Account;
 import Accounts.AccountFactory;
-import Accounts.AdminActions;
+import userActions.AdminActions;
 import Authentication.LogOut;
 import DatabaseConnection.ConnectToDatabase;
 import java.sql.Connection;
@@ -69,7 +69,7 @@ public class Admin_NewAccount extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setText("User: admin on Database: FLPM");
+        jLabel2.setText("User: Admin");
 
         jLabel3.setText("Name :");
 

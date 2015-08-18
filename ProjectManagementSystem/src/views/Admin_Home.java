@@ -6,6 +6,7 @@
 package views;
 
 import Authentication.LogOut;
+import javax.swing.JOptionPane;
 import projectManagementSystem.ProjectManagementGlobalSession;
 
 /**
@@ -42,9 +43,9 @@ public class Admin_Home extends javax.swing.JPanel {
         students = new javax.swing.JButton();
         facultyButton = new javax.swing.JButton();
         clientsButton = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        currentProjects = new javax.swing.JButton();
+        upcomingButton = new javax.swing.JButton();
+        completed = new javax.swing.JButton();
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile_icon.PNG"))); // NOI18N
         jLabel2.setText("Profiles ");
@@ -53,7 +54,7 @@ public class Admin_Home extends javax.swing.JPanel {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/flpm.PNG"))); // NOI18N
 
-        jLabel4.setText("User: Admin on Database: FLPM");
+        jLabel4.setText("User: Admin");
 
         jButton8.setText("Home");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -96,11 +97,26 @@ public class Admin_Home extends javax.swing.JPanel {
             }
         });
 
-        jButton5.setText("Current Projects");
+        currentProjects.setText("Current Projects");
+        currentProjects.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                currentProjectsActionPerformed(evt);
+            }
+        });
 
-        jButton6.setText("Upcoming Projects");
+        upcomingButton.setText("Upcoming Projects");
+        upcomingButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                upcomingButtonActionPerformed(evt);
+            }
+        });
 
-        jButton9.setText("Completed Projects");
+        completed.setText("Completed Projects");
+        completed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                completedActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -131,9 +147,9 @@ public class Admin_Home extends javax.swing.JPanel {
                                 .addGap(42, 42, 42)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(completed, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(upcomingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(currentProjects, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -152,15 +168,15 @@ public class Admin_Home extends javax.swing.JPanel {
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(facultyButton)
-                    .addComponent(jButton5))
+                    .addComponent(currentProjects))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(students)
-                    .addComponent(jButton6))
+                    .addComponent(upcomingButton))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(clientsButton)
-                    .addComponent(jButton9))
+                    .addComponent(completed))
                 .addGap(34, 34, 34))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -198,15 +214,27 @@ public class Admin_Home extends javax.swing.JPanel {
         ProjectManagementGlobalSession.centralPanel.updateUI();
     }//GEN-LAST:event_clientsButtonActionPerformed
 
+    private void currentProjectsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_currentProjectsActionPerformed
+        JOptionPane.showMessageDialog(this,new Admin_ProjectViews("current"));
+
+    }//GEN-LAST:event_currentProjectsActionPerformed
+
+    private void upcomingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upcomingButtonActionPerformed
+        JOptionPane.showMessageDialog(this,new Admin_ProjectViews("upcoming"));
+    }//GEN-LAST:event_upcomingButtonActionPerformed
+
+    private void completedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_completedActionPerformed
+        JOptionPane.showMessageDialog(this,new Admin_ProjectViews("completed"));
+    }//GEN-LAST:event_completedActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton clientsButton;
+    private javax.swing.JButton completed;
+    private javax.swing.JButton currentProjects;
     private javax.swing.JButton facultyButton;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -214,5 +242,6 @@ public class Admin_Home extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JButton logoutButton;
     private javax.swing.JButton students;
+    private javax.swing.JButton upcomingButton;
     // End of variables declaration//GEN-END:variables
 }

@@ -80,7 +80,7 @@ public class Admin_UserListPage extends javax.swing.JPanel {
 
         setPreferredSize(new java.awt.Dimension(700, 525));
 
-        jLabel4.setText("User: admin on Database: FLPM");
+        jLabel4.setText("User: Admin");
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile_icon.PNG"))); // NOI18N
         jLabel3.setText("Admin -> Users List");

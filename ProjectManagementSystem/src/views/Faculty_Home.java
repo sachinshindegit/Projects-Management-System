@@ -6,6 +6,7 @@
 package views;
 
 import Accounts.Account;
+import Accounts.Faculty;
 import Authentication.LogOut;
 import DatabaseConnection.ConnectToDatabase;
 import java.sql.Connection;
@@ -34,6 +35,8 @@ public class Faculty_Home extends javax.swing.JPanel {
     DefaultTableModel model;
     public Faculty_Home() {
         initComponents();
+        Faculty faculty = (Faculty)ProjectManagementGlobalSession.loggedInUser;
+        userLoggedIn.setText("User: "+ faculty.getUserName());
         PreparedStatement preparedStatement=null;
             ResultSet resultSetLogin = null;
             boolean loginFlag=false;
@@ -81,7 +84,7 @@ public class Faculty_Home extends javax.swing.JPanel {
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        userLoggedIn = new javax.swing.JLabel();
         homeButton = new javax.swing.JButton();
         logoutButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -112,7 +115,7 @@ public class Faculty_Home extends javax.swing.JPanel {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/flpm.PNG"))); // NOI18N
 
-        jLabel2.setText("User: faculty on database: flpm ");
+        userLoggedIn.setText("User: ");
 
         homeButton.setText("Home");
         homeButton.addActionListener(new java.awt.event.ActionListener() {
@@ -192,7 +195,7 @@ public class Faculty_Home extends javax.swing.JPanel {
                                         .addComponent(viewProjectDetailsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(152, 152, 152))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(userLoggedIn, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(createNewProjectButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -215,7 +218,7 @@ public class Faculty_Home extends javax.swing.JPanel {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(userLoggedIn, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(homeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -293,7 +296,7 @@ public class Faculty_Home extends javax.swing.JPanel {
                     project.setClientId(resultSetLogin.getNString("client_id"));
                     project.setProjectDescription(resultSetLogin.getNString("project_description"));
                         project.setStartDate(resultSetLogin.getDate("start_date"));
-                        project.setEndDate(resultSetLogin.getDate("start_date"));
+                        project.setEndDate(resultSetLogin.getDate("end_date"));
                     project.setFacultyId(ProjectManagementGlobalSession.user_id);
                     ProjectManagementGlobalSession.context = project;
 
@@ -318,7 +321,6 @@ public class Faculty_Home extends javax.swing.JPanel {
     private javax.swing.JButton homeButton;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
@@ -332,6 +334,7 @@ public class Faculty_Home extends javax.swing.JPanel {
     private javax.swing.JButton logoutButton;
     private javax.swing.JTextField projectIdViewDetails;
     private javax.swing.JTable projectListTable;
+    private javax.swing.JLabel userLoggedIn;
     private javax.swing.JButton viewProjectDetailsButton;
     // End of variables declaration//GEN-END:variables
 }

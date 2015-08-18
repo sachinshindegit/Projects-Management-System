@@ -28,11 +28,9 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="confirmMembersButton" pref="186" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="removeAddedMemberButton" pref="186" max="32767" attributes="0"/>
-                              <Component id="addMemberButton" pref="186" max="32767" attributes="0"/>
-                              <Component id="addStudent" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="removeAddedMemberButton" pref="186" max="32767" attributes="0"/>
+                          <Component id="addMemberButton" pref="186" max="32767" attributes="0"/>
+                          <Component id="addStudent" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="jScrollPane3" pref="0" max="32767" attributes="0"/>

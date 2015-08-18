@@ -34,6 +34,7 @@ public class NewProject extends javax.swing.JPanel {
     FacultyActions facultyActions=null;
     public NewProject() {
         initComponents();
+        
     }
 
     /**
@@ -241,6 +242,9 @@ public class NewProject extends javax.swing.JPanel {
 
     private void addMembersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMembersButtonActionPerformed
         JOptionPane.showMessageDialog(this,new Add_members());
+        ProjectManagementGlobalSession.centralPanel.removeAll();
+        ProjectManagementGlobalSession.centralPanel.add(new Faculty_Home());
+        ProjectManagementGlobalSession.centralPanel.updateUI();
         
     }//GEN-LAST:event_addMembersButtonActionPerformed
 
