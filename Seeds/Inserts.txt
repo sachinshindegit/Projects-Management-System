@@ -23,6 +23,8 @@ INSERT INTO accounts VALUES('Terry12','Terry Dsouza','student','Terry@scu.edu','
 INSERT INTO login VALUES('terry12','terry12');
 ********************* Student End************************************************************
 ********************* faculty start************************************************************
+INSERT INTO accounts VALUES('faculty12','Faculty','faculty','faculty12@scu.edu','988452135');
+INSERT INTO login VALUES('faculty12','faculty12');
 INSERT INTO accounts VALUES('moazzini12','Moazzini','faculty','Moazzini12@scu.edu','988452135');
 INSERT INTO login VALUES('moazzini12','moazzini12');
 INSERT INTO accounts VALUES('holiday12','holiday','faculty','holiday12@scu.edu','445852135');
@@ -38,6 +40,19 @@ INSERT INTO login VALUES('dom12','dom12');
 INSERT INTO accounts VALUES('chaitali12','chaitali Damera','faculty','chaitali12@scu.edu','789552135');
 INSERT INTO login VALUES('chaitali12','chaitali12');
 ********************* faculty end************************************************************
+********************* client start************************************************************
+INSERT INTO accounts VALUES('mozes12','Mozes stark','client','mozes12@scu.edu','988452135');
+INSERT INTO login VALUES('mozes12','mozes12');
+INSERT INTO accounts VALUES('wallgreens12','wallgreens','client','wallgreens12@scu.edu','445852135');
+INSERT INTO login VALUES('wallgreens12','wallgreens12');	
+INSERT INTO accounts VALUES('frank123','frank Mande','client','frank123@scu.edu','988452135');
+INSERT INTO login VALUES('frank123','frank123');
+********************* client end************************************************************
 
 
+************************Project start************************************************************/
+INSERT INTO PROJECT VALUES('DP02','design patterns','this is a design pattern  project','wallgreens12','2004-05-12','2012-06-12','faculty12');
 
+INSERT INTO PROJECT VALUES('iot1','Smart locking system','Project is a part of iot','mozes12','2015-08-01','2016-08-30','faculty12');
+
+************************project end************************************************************
