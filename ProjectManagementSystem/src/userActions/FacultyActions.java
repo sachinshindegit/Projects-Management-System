@@ -184,4 +184,20 @@ public class FacultyActions {
         return false;
         
     }
+    
+        // deletes existing task
+    public void deleteTask(String taskId){
+        try {
+            Statement statement=null;
+            String sql="";
+            ConnectToDatabase connectToDatabase = new ConnectToDatabase();
+            Connection connection = connectToDatabase.getConnection();
+            
+            statement=connection.createStatement();
+            sql="DELETE FROM task WHERE task_id='"+taskId+"'";
+            statement.executeUpdate(sql);
+        } catch (SQLException ex) {
+            Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

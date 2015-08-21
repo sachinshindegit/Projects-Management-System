@@ -39,17 +39,18 @@ public class MainWindow extends javax.swing.JFrame {
 
         centralPanel.setBackground(new java.awt.Color(255, 255, 255));
         centralPanel.setOpaque(false);
+        centralPanel.setPreferredSize(new java.awt.Dimension(900, 600));
         centralPanel.setLayout(new java.awt.BorderLayout());
 
         javax.swing.GroupLayout centralPanelLayout = new javax.swing.GroupLayout(centralPanel);
         centralPanel.setLayout(centralPanelLayout);
         centralPanelLayout.setHorizontalGroup(
             centralPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
+            .addGap(0, 900, Short.MAX_VALUE)
         );
         centralPanelLayout.setVerticalGroup(
             centralPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 525, Short.MAX_VALUE)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout contentPaneLayout = new javax.swing.GroupLayout(contentPane);

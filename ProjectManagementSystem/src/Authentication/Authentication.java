@@ -7,7 +7,9 @@ package Authentication;
 
 import Accounts.Account;
 import Accounts.Admin;
+import Accounts.Client;
 import Accounts.Faculty;
+import Accounts.Student;
 import DatabaseConnection.ConnectToDatabase;
 import views.Faculty_Home;
 import java.sql.Connection;
@@ -18,7 +20,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import projectManagementSystem.*;
 import views.Admin_Home;
+import views.Client_Home;
 import views.IDisplayMessage;
+import views.Student_Home;
 
 /**
  *
@@ -75,7 +79,7 @@ public class Authentication {
                 break;
             } 
             resultSetLogin.close();
-            
+
             // If user login credentials are valid
             if(loginFlag){
                 ProjectManagementGlobalSession.centralPanel.removeAll();
@@ -94,6 +98,7 @@ public class Authentication {
                     // Setting the loggedInUser global variable
                     ProjectManagementGlobalSession.loggedInUser = admin;
                     
+                    
                     // Setting the new page
                     ProjectManagementGlobalSession.centralPanel.add(new Admin_Home());
                     ProjectManagementGlobalSession.centralPanel.updateUI();
@@ -102,7 +107,17 @@ public class Authentication {
                 // If the role is admin then navigate to Student screen
                 // student
                 if(ProjectManagementGlobalSession.user_role.equalsIgnoreCase("student")){
+                    Student student = new Student(resultSetAccount.getNString("user_id"), 
+                            resultSetAccount.getNString("user_name"), 
+                            resultSetAccount.getNString("user_role"), 
+                            resultSetAccount.getNString("user_email"), 
+                            resultSetAccount.getNString("user_phone"));
+                     // Setting the loggedInUser global variable
+                    ProjectManagementGlobalSession.loggedInUser = student;
                     
+                    // Setting the new page
+                    ProjectManagementGlobalSession.centralPanel.add(new Student_Home());
+                    ProjectManagementGlobalSession.centralPanel.updateUI();
                 }
                 
                 // If the role is admin then navigate to faculty screen
@@ -127,6 +142,19 @@ public class Authentication {
                 // client
                 if(ProjectManagementGlobalSession.user_role.equalsIgnoreCase("client")){
                     
+                    Client client = new Client(resultSetAccount.getNString("user_id"), 
+                            resultSetAccount.getNString("user_name"), 
+                            resultSetAccount.getNString("user_role"), 
+                            resultSetAccount.getNString("user_email"), 
+                            resultSetAccount.getNString("user_phone"));
+                    
+                    
+                    // Setting the loggedInUser global variable
+                    ProjectManagementGlobalSession.loggedInUser = client;
+                    
+                    // Setting the new page
+                    ProjectManagementGlobalSession.centralPanel.add(new Client_Home());
+                    ProjectManagementGlobalSession.centralPanel.updateUI();
                 }
                 
                 resultSetAccount.close();
