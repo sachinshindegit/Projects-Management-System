@@ -5,6 +5,7 @@
  */
 package views;
 
+import Authentication.LogOut;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
@@ -16,6 +17,7 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PiePlot;
 import org.jfree.data.general.DefaultPieDataset;
 import projectBuilder.Project;
+import projectManagementSystem.ProjectManagementGlobalSession;
 import taskBuilder.Task;
 import userActions.StudentActions;
 
@@ -35,6 +37,7 @@ public class Student_Home extends javax.swing.JPanel {
         initComponents();
         userLoggedIn.setText("User: "+projectManagementSystem.ProjectManagementGlobalSession.user_id);
         studentActions = new StudentActions();
+        taskModel = (DefaultTableModel) taskListTable.getModel();
         ArrayList projectsList = studentActions.fetchProjets();
         Date date = new Date();
         projectModel = (DefaultTableModel)projectListTable.getModel();
@@ -70,8 +73,8 @@ public class Student_Home extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        logoutButton = new javax.swing.JButton();
+        homeButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         projectListTable = new javax.swing.JTable();
         userLoggedIn = new javax.swing.JLabel();
@@ -84,13 +87,24 @@ public class Student_Home extends javax.swing.JPanel {
         jButton3 = new javax.swing.JButton();
         taskPieChart = new javax.swing.JPanel();
 
+        setBackground(new java.awt.Color(153, 255, 255));
         setPreferredSize(new java.awt.Dimension(900, 600));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/flpm_2.PNG"))); // NOI18N
 
-        jButton1.setText("Log Out");
+        logoutButton.setText("Log Out");
+        logoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutButtonActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Home");
+        homeButton.setText("Home");
+        homeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeButtonActionPerformed(evt);
+            }
+        });
 
         projectListTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -172,9 +186,9 @@ public class Student_Home extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(userLoggedIn, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(homeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(25, 25, 25))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -200,8 +214,8 @@ public class Student_Home extends javax.swing.JPanel {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(homeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(userLoggedIn, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -230,13 +244,24 @@ public class Student_Home extends javax.swing.JPanel {
         markComplete();
         populateTasks();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
+        ProjectManagementGlobalSession.centralPanel.removeAll();
+        ProjectManagementGlobalSession.centralPanel.add(new Student_Home());
+        ProjectManagementGlobalSession.centralPanel.updateUI();
+    }//GEN-LAST:event_homeButtonActionPerformed
+
+    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+        LogOut logout = new LogOut();
+        logout.logOut();
+    }//GEN-LAST:event_logoutButtonActionPerformed
     private void populateTasks(){
         ArrayList taskList = studentActions.fetchTasks();
         
-        taskModel = (DefaultTableModel) taskListTable.getModel();
-        for(int i=0;i<taskModel.getRowCount();i++){
+        while(taskModel.getRowCount()!=0 ){
             taskModel.removeRow(taskModel.getRowCount()-1);
         }
+
         
         Task task = new Task();
         Date currDate = new Date();
@@ -276,6 +301,7 @@ public class Student_Home extends javax.swing.JPanel {
         if(this.taskLinkedList.contains(taskComplete.getText().trim())){
             if(studentActions.markAsComplete(taskComplete.getText().trim())){
                 this.taskLinkedList.remove(taskComplete.getText().trim());
+                taskComplete.setText("");
                 populateTasks();
             }
             else{
@@ -289,8 +315,7 @@ public class Student_Home extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton homeButton;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -298,6 +323,7 @@ public class Student_Home extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton logoutButton;
     private javax.swing.JTable projectListTable;
     private javax.swing.JTextField taskComplete;
     private javax.swing.JTable taskListTable;

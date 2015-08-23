@@ -37,7 +37,8 @@ public class MainWindow extends javax.swing.JFrame {
 
         contentPane.setBackground(new java.awt.Color(255, 255, 255));
 
-        centralPanel.setBackground(new java.awt.Color(255, 255, 255));
+        centralPanel.setBackground(new java.awt.Color(204, 204, 255));
+        centralPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 2, 2, 2, new java.awt.Color(0, 0, 0)));
         centralPanel.setOpaque(false);
         centralPanel.setPreferredSize(new java.awt.Dimension(900, 600));
         centralPanel.setLayout(new java.awt.BorderLayout());
@@ -46,7 +47,7 @@ public class MainWindow extends javax.swing.JFrame {
         centralPanel.setLayout(centralPanelLayout);
         centralPanelLayout.setHorizontalGroup(
             centralPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 900, Short.MAX_VALUE)
+            .addGap(0, 898, Short.MAX_VALUE)
         );
         centralPanelLayout.setVerticalGroup(
             centralPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -57,11 +58,15 @@ public class MainWindow extends javax.swing.JFrame {
         contentPane.setLayout(contentPaneLayout);
         contentPaneLayout.setHorizontalGroup(
             contentPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(centralPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(contentPaneLayout.createSequentialGroup()
+                .addComponent(centralPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 902, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(centralPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(contentPaneLayout.createSequentialGroup()
+                .addComponent(centralPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

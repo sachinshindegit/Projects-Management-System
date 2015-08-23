@@ -22,6 +22,8 @@ import projectBuilder.ProjectBuilder;
 import projectGroup.ProjectGroup;
 import projectGroup.StudentMember;
 import projectManagementSystem.ProjectManagementGlobalSession;
+import projectState.ProjectStatus;
+import projectState.State;
 import userActions.FacultyActions;
 
 /**
@@ -49,12 +51,10 @@ public class Faculty_Project_Update extends javax.swing.JPanel {
             endDate.setDate(project.getEndDate());
             clientId.setText(project.getClientId());
             Date date = new Date();
-            if(date.after(project.getEndDate())){
-                projectStatus.setText("Completed");
-            }
-            else{
-                projectStatus.setText("In progress");
-            }
+            ProjectStatus  projectStatus = new ProjectStatus();
+            
+            State state = projectStatus.findProjectStatus(project);
+            projectStatusText.setText(state.printState());
             populateMembersTable();
       
         
@@ -82,7 +82,7 @@ public class Faculty_Project_Update extends javax.swing.JPanel {
         trackProjectButton = new javax.swing.JButton();
         userLoggedIn = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        projectStatus = new javax.swing.JTextField();
+        projectStatusText = new javax.swing.JTextField();
         homeButton = new javax.swing.JButton();
         logoutButton = new javax.swing.JButton();
         startDate = new com.toedter.calendar.JDateChooser();
@@ -93,6 +93,7 @@ public class Faculty_Project_Update extends javax.swing.JPanel {
         membersListTable = new javax.swing.JTable();
         createTaskButton = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(153, 255, 255));
         setPreferredSize(new java.awt.Dimension(900, 600));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/flpm_2.PNG"))); // NOI18N
@@ -146,9 +147,10 @@ public class Faculty_Project_Update extends javax.swing.JPanel {
 
         jLabel2.setText("Project Status:");
 
-        projectStatus.addActionListener(new java.awt.event.ActionListener() {
+        projectStatusText.setEditable(false);
+        projectStatusText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                projectStatusActionPerformed(evt);
+                projectStatusTextActionPerformed(evt);
             }
         });
 
@@ -232,7 +234,7 @@ public class Faculty_Project_Update extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(projectStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(projectStatusText, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -302,7 +304,7 @@ public class Faculty_Project_Update extends javax.swing.JPanel {
                         .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(projectStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(projectStatusText, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -381,9 +383,9 @@ public class Faculty_Project_Update extends javax.swing.JPanel {
 
     }//GEN-LAST:event_trackProjectButtonActionPerformed
 
-    private void projectStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_projectStatusActionPerformed
+    private void projectStatusTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_projectStatusTextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_projectStatusActionPerformed
+    }//GEN-LAST:event_projectStatusTextActionPerformed
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         ProjectManagementGlobalSession.centralPanel.removeAll();
@@ -432,6 +434,7 @@ public class Faculty_Project_Update extends javax.swing.JPanel {
         ProjectManagementGlobalSession.centralPanel.updateUI();
     }//GEN-LAST:event_createTaskButtonActionPerformed
 
+    // This method populates the members table
     private void populateMembersTable(){
         try {
             String sql = "Select * from project_members where project_id='"+project.getProjectId()+"'";
@@ -446,6 +449,8 @@ public class Faculty_Project_Update extends javax.swing.JPanel {
             while(membersModel.getRowCount() > 0){
                 membersModel.removeRow(membersModel.getRowCount()-1);
             }
+            System.out.println("membersLinkedList size: "+membersLinkedList.size());
+            membersLinkedList.clear();
             while(resultSet.next()){
                 membersLinkedList.add(resultSet.getNString("user_id"));
                 student = new Student(resultSet.getNString("user_id"), null, null, null, null);
@@ -453,6 +458,7 @@ public class Faculty_Project_Update extends javax.swing.JPanel {
                 String[] s = {resultSet.getNString("user_id")};
                 membersModel.insertRow(membersModel.getRowCount(), s);
             }
+            System.out.println("After membersLinkedList: "+membersLinkedList);
             if(membersLinkedList.size() > 0){
                 deleteMemberButton.setEnabled(true);
             }
@@ -529,7 +535,7 @@ public class Faculty_Project_Update extends javax.swing.JPanel {
     private javax.swing.JTextArea projectDescription;
     private javax.swing.JTextField projectId;
     private javax.swing.JTextField projectName;
-    private javax.swing.JTextField projectStatus;
+    private javax.swing.JTextField projectStatusText;
     private com.toedter.calendar.JDateChooser startDate;
     private javax.swing.JButton trackProjectButton;
     private javax.swing.JButton updateProjectButton;

@@ -18,6 +18,8 @@ import org.jfree.data.general.Dataset;
 import org.jfree.data.general.DefaultPieDataset;
 import projectBuilder.Project;
 import projectManagementSystem.ProjectManagementGlobalSession;
+import projectState.ProjectStatus;
+import projectState.State;
 import userActions.ClientActions;
 
 /**
@@ -56,6 +58,7 @@ public class Client_Home extends javax.swing.JPanel {
         projectListTable = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(153, 255, 255));
         setPreferredSize(new java.awt.Dimension(900, 600));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/flpm_2.PNG"))); // NOI18N
@@ -160,23 +163,16 @@ public class Client_Home extends javax.swing.JPanel {
     private void populateProjects(){
         ArrayList projectsList = this.clientActions.fetchProject();
         model = (DefaultTableModel)projectListTable.getModel();
+        ProjectStatus projectStatus = new ProjectStatus();
         Date date = new Date();
         Project project = null;
         
         for(int i=0;i<projectsList.size();i++){
             project = (Project)projectsList.get(i);
-            if(date.before(project.getEndDate()) && date.after(project.getStartDate())){
-                 String[] str = {project.getProjectId(), project.getProjectName(),"In progress", project.getFacultyId()};
-                 model.insertRow(model.getRowCount(),str);
-            }
-            if(date.before(project.getStartDate())){
-                 String[] str = {project.getProjectId(), project.getProjectName(),"Up coming", project.getFacultyId()};
-                 model.insertRow(model.getRowCount(),str);
-            }
-            if(date.after(project.getEndDate())){
-                 String[] str = {project.getProjectId(), project.getProjectName(),"Completed", project.getFacultyId()};
-                 model.insertRow(model.getRowCount(),str);
-            }
+            State  state = projectStatus.findProjectStatus(project);
+            String[] str = {project.getProjectId(), project.getProjectName(),state.printState(), project.getFacultyId()};
+            model.insertRow(model.getRowCount(),str);
+            
         }
         
     }

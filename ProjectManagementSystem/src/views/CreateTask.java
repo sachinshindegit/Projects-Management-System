@@ -40,6 +40,7 @@ public class CreateTask extends javax.swing.JPanel {
     
      public CreateTask(Project project, LinkedList membersLinkedList){
         initComponents();
+        System.out.println("Create task membersLinkedList: "+membersLinkedList.size());
         loggedInUser.setText("User: "+ProjectManagementGlobalSession.user_id);
         this.project = project;
         projectId.setText(project.getProjectId());
@@ -80,6 +81,7 @@ public class CreateTask extends javax.swing.JPanel {
         taskListCombo = new javax.swing.JComboBox();
         deleteTaskButton = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(153, 255, 255));
         setPreferredSize(new java.awt.Dimension(900, 600));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/flpm_2.PNG"))); // NOI18N
@@ -271,6 +273,7 @@ public class CreateTask extends javax.swing.JPanel {
         if(resp == 0){
             actions.deleteTask(taskListCombo.getSelectedItem().toString());
         }    
+        populateTasksList();
             
     }//GEN-LAST:event_deleteTaskButtonActionPerformed
     
@@ -319,6 +322,7 @@ public class CreateTask extends javax.swing.JPanel {
                 
                 if(startDate.getDate().before(project.getStartDate())){
                     JOptionPane.showMessageDialog(this, "Invalid start date. It cannot be before projec start date "+project.getStartDate());
+                    return false;
                 }
                 } catch (SQLException ex) {
                 Logger.getLogger(Admin_NewAccount.class.getName()).log(Level.SEVERE, null, ex);
@@ -327,6 +331,7 @@ public class CreateTask extends javax.swing.JPanel {
     }
     
     private void populateTasksList(){
+        taskListCombo.removeAllItems();
         try {
             PreparedStatement preparedStatement=null;
             ResultSet resultSetLogin = null;

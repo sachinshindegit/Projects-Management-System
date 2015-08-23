@@ -15,6 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -78,6 +79,7 @@ public class Admin_UserListPage extends javax.swing.JPanel {
         usersListTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(153, 255, 255));
         setPreferredSize(new java.awt.Dimension(900, 600));
 
         jLabel4.setText("User: Admin");
@@ -234,7 +236,8 @@ public class Admin_UserListPage extends javax.swing.JPanel {
     private boolean validateInputs(){
         if(userId.getText().trim().length()<1){
             displayMessage.setText("");
-            displayMessage.setText("Please enter user id to be searched");
+                    JOptionPane.showMessageDialog(this, "Please enter user id to be searched");
+            
             return false;
         }
         return true;
@@ -264,7 +267,8 @@ public class Admin_UserListPage extends javax.swing.JPanel {
 
                 if(!loginFlag){
                     displayMessage.setText("");
-                    displayMessage.setText("User with entered user id does not exist");
+                    JOptionPane.showMessageDialog(this, "User with entered user id does not exist");
+                    
                 }
                 else{
                     ProjectManagementGlobalSession.context = new String(userId.getText());

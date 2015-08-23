@@ -46,6 +46,7 @@ public class Login_Page extends javax.swing.JPanel implements IDisplayMessage{
         message = new javax.swing.JLabel();
         displayMessage = new javax.swing.JLabel();
 
+        jPanel1.setBackground(new java.awt.Color(153, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(900, 600));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/flpm_2.PNG"))); // NOI18N

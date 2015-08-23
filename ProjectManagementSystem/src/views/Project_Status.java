@@ -164,6 +164,7 @@ public class Project_Status extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         tasksPanel = new javax.swing.JPanel();
 
+        setBackground(new java.awt.Color(153, 255, 255));
         setPreferredSize(new java.awt.Dimension(900, 600));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/flpm_2.PNG"))); // NOI18N

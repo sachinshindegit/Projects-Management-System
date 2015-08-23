@@ -9,12 +9,14 @@ import Accounts.Account;
 import Accounts.Faculty;
 import Authentication.LogOut;
 import DatabaseConnection.ConnectToDatabase;
+import FacultyMediator.FacultyMediator;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,7 +39,19 @@ public class Faculty_Home extends javax.swing.JPanel {
         initComponents();
         Faculty faculty = (Faculty)ProjectManagementGlobalSession.loggedInUser;
         userLoggedIn.setText("User: "+ ProjectManagementGlobalSession.user_id);
-        PreparedStatement preparedStatement=null;
+        
+        FacultyMediator facultyMediator = new FacultyMediator();
+        ArrayList temp = facultyMediator.fetchMyProjects();
+        
+        model=(DefaultTableModel)projectListTable.getModel();
+        model.setRowCount(0);
+            
+        for(int i=0;i<temp.size();i++){
+            Project project = (Project)temp.get(i);
+            String[] s={project.getProjectId(),project.getProjectName(),project.getProjectName()};
+            model.insertRow(model.getRowCount(),s);
+        }
+        /*PreparedStatement preparedStatement=null;
             ResultSet resultSetLogin = null;
             boolean loginFlag=false;
 
@@ -62,7 +76,7 @@ public class Faculty_Home extends javax.swing.JPanel {
             } catch (SQLException ex) {
                 Logger.getLogger(Admin_UserListPage.class.getName()).log(Level.SEVERE, null, ex);
             }
-        
+        */
             
     }
 
@@ -113,6 +127,7 @@ public class Faculty_Home extends javax.swing.JPanel {
         jMenu5.setText("Edit");
         jMenuBar2.add(jMenu5);
 
+        setBackground(new java.awt.Color(153, 255, 255));
         setPreferredSize(new java.awt.Dimension(900, 600));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/flpm_2.PNG"))); // NOI18N
