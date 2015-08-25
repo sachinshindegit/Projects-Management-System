@@ -19,6 +19,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import projectManagementSystem.*;
+import strategyPattern_display.DisplayStrategyContext;
 import views.Admin_Home;
 import views.Client_Home;
 import views.IDisplayMessage;
@@ -54,6 +55,7 @@ public class Authentication {
         Account loggedInUser=null;
         ConnectToDatabase connectToDatabase = new ConnectToDatabase();
         Connection connection = connectToDatabase.getConnection();
+        DisplayStrategyContext displayStrategyContext = null;
         String sql="";
         try {
             // To check if the user id and password are valid
@@ -74,6 +76,7 @@ public class Authentication {
                     projectManagementSystem.ProjectManagementGlobalSession.user_id = this.userId;
                     projectManagementSystem.ProjectManagementGlobalSession.user_role = resultSetAccount.getNString("user_role");
                     loginFlag=true;
+                    displayStrategyContext = new DisplayStrategyContext(resultSetAccount.getNString("user_role"));
                     break;
                 }
                 break;
@@ -100,7 +103,7 @@ public class Authentication {
                     
                     
                     // Setting the new page
-                    ProjectManagementGlobalSession.centralPanel.add(new Admin_Home());
+                    ProjectManagementGlobalSession.centralPanel.add(displayStrategyContext.getMyPage());
                     ProjectManagementGlobalSession.centralPanel.updateUI();
                 }
                 
@@ -116,7 +119,7 @@ public class Authentication {
                     ProjectManagementGlobalSession.loggedInUser = student;
                     
                     // Setting the new page
-                    ProjectManagementGlobalSession.centralPanel.add(new Student_Home());
+                    ProjectManagementGlobalSession.centralPanel.add(displayStrategyContext.getMyPage());
                     ProjectManagementGlobalSession.centralPanel.updateUI();
                 }
                 
@@ -134,7 +137,7 @@ public class Authentication {
                     ProjectManagementGlobalSession.loggedInUser = faculty;
                     
                     // Setting the new page
-                    ProjectManagementGlobalSession.centralPanel.add(new Faculty_Home());
+                    ProjectManagementGlobalSession.centralPanel.add(displayStrategyContext.getMyPage());
                     ProjectManagementGlobalSession.centralPanel.updateUI();
                 }
                 
@@ -153,7 +156,7 @@ public class Authentication {
                     ProjectManagementGlobalSession.loggedInUser = client;
                     
                     // Setting the new page
-                    ProjectManagementGlobalSession.centralPanel.add(new Client_Home());
+                    ProjectManagementGlobalSession.centralPanel.add(displayStrategyContext.getMyPage());
                     ProjectManagementGlobalSession.centralPanel.updateUI();
                 }
                 

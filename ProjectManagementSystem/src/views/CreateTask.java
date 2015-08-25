@@ -81,7 +81,7 @@ public class CreateTask extends javax.swing.JPanel {
         taskListCombo = new javax.swing.JComboBox();
         deleteTaskButton = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(153, 255, 255));
+        setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(900, 600));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/flpm_2.PNG"))); // NOI18N

@@ -52,7 +52,7 @@ public class Admin_Home extends javax.swing.JPanel {
 
         jButton4.setText("Current Projects");
 
-        setBackground(new java.awt.Color(153, 255, 255));
+        setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(900, 600));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));

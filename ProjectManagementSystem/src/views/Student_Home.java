@@ -87,7 +87,7 @@ public class Student_Home extends javax.swing.JPanel {
         jButton3 = new javax.swing.JButton();
         taskPieChart = new javax.swing.JPanel();
 
-        setBackground(new java.awt.Color(153, 255, 255));
+        setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(900, 600));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/flpm_2.PNG"))); // NOI18N
@@ -122,6 +122,7 @@ public class Student_Home extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        projectListTable.setGridColor(new java.awt.Color(255, 255, 255));
         projectListTable.setShowHorizontalLines(false);
         projectListTable.setShowVerticalLines(false);
         jScrollPane1.setViewportView(projectListTable);
@@ -148,6 +149,8 @@ public class Student_Home extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        taskListTable.setGridColor(new java.awt.Color(255, 255, 255));
+        taskListTable.setSelectionBackground(new java.awt.Color(255, 255, 255));
         taskListTable.setShowHorizontalLines(false);
         taskListTable.setShowVerticalLines(false);
         jScrollPane2.setViewportView(taskListTable);
@@ -161,7 +164,7 @@ public class Student_Home extends javax.swing.JPanel {
             }
         });
 
-        taskPieChart.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        taskPieChart.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout taskPieChartLayout = new javax.swing.GroupLayout(taskPieChart);
         taskPieChart.setLayout(taskPieChartLayout);

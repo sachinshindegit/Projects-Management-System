@@ -14,7 +14,7 @@ import java.util.logging.Logger;
  */
 
 // This class acts as a factory for creating user accounts implementing the factory method design pattern
-public class AccountFactory {
+public class AccountFactory implements AccountCreator{
     String userId, userName, userRole, userEmail, userPhone;
     public AccountFactory(String userId, String userName, String userRole, String userEmail, String userPhone){
         this.userId=userId;
@@ -23,6 +23,8 @@ public class AccountFactory {
         this.userEmail=userEmail;
         this.userPhone=userPhone;
     }
+    
+    @Override
     // This method creates user accounts
     public Account getAccount(String accountType){
       if(accountType == null){

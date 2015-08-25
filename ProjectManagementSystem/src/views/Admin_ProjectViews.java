@@ -49,7 +49,7 @@ public class Admin_ProjectViews extends javax.swing.JPanel {
         projectListTable = new javax.swing.JTable();
         projectsType = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(204, 204, 255));
+        setBackground(new java.awt.Color(255, 255, 255));
 
         projectListTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

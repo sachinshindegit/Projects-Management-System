@@ -37,11 +37,11 @@ public class ProjectManagementGlobalSession {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                  user_id=null;
-                 window=new MainWindow();
+                 window= new MainWindow();
                  window.setVisible(true);
                  centralPanel=window.getCentralPanel();
                  centralPanel.setLayout(new java.awt.BorderLayout());
-                 window.setResizable(false);
+                 window.setResizable(true);
                  window.setLocationRelativeTo(null);
                  
                  centralPanel.add(new Login_Page());

@@ -72,7 +72,7 @@ public class NewProject extends javax.swing.JPanel {
         jRadioButtonMenuItem1.setSelected(true);
         jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
 
-        setBackground(new java.awt.Color(153, 255, 255));
+        setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(900, 600));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/flpm_2.PNG"))); // NOI18N
@@ -253,7 +253,7 @@ public class NewProject extends javax.swing.JPanel {
     }//GEN-LAST:event_addMembersButtonActionPerformed
 
     private void registerProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerProjectActionPerformed
-        facultyActions = (FacultyActions)ProjectManagementGlobalSession.context;
+        //facultyActions = (FacultyActions)ProjectManagementGlobalSession.context;
         if(facultyActions==null){
             facultyActions = new FacultyActions();
         }

@@ -79,7 +79,7 @@ public class Admin_UserListPage extends javax.swing.JPanel {
         usersListTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(153, 255, 255));
+        setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(900, 600));
 
         jLabel4.setText("User: Admin");

@@ -84,6 +84,8 @@ public class Add_members extends javax.swing.JPanel {
         removeAddedMemberButton = new javax.swing.JButton();
         confirmMembersButton = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
         studentListTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

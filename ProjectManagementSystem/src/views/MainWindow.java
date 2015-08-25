@@ -5,6 +5,7 @@
  */
 package views;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -19,6 +20,8 @@ public class MainWindow extends javax.swing.JFrame {
     public MainWindow() {
         initComponents();
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -38,7 +41,6 @@ public class MainWindow extends javax.swing.JFrame {
         contentPane.setBackground(new java.awt.Color(255, 255, 255));
 
         centralPanel.setBackground(new java.awt.Color(204, 204, 255));
-        centralPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 2, 2, 2, new java.awt.Color(0, 0, 0)));
         centralPanel.setOpaque(false);
         centralPanel.setPreferredSize(new java.awt.Dimension(900, 600));
         centralPanel.setLayout(new java.awt.BorderLayout());
@@ -47,11 +49,11 @@ public class MainWindow extends javax.swing.JFrame {
         centralPanel.setLayout(centralPanelLayout);
         centralPanelLayout.setHorizontalGroup(
             centralPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 898, Short.MAX_VALUE)
+            .addGap(0, 902, Short.MAX_VALUE)
         );
         centralPanelLayout.setVerticalGroup(
             centralPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGap(0, 602, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout contentPaneLayout = new javax.swing.GroupLayout(contentPane);

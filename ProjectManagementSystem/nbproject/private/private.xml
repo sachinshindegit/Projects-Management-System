@@ -2,6 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/NetBeansProjects/ProjectManagementSystem/src/projectState/State.java</file>
+            <file>file:/D:/NetBeansProjects/ProjectManagementSystem/src/projectState/ProjectStatus.java</file>
+            <file>file:/D:/NetBeansProjects/ProjectManagementSystem/src/views/Faculty_Home.java</file>
+            <file>file:/D:/NetBeansProjects/ProjectManagementSystem/src/views/Project_Status.java</file>
+            <file>file:/D:/NetBeansProjects/ProjectManagementSystem/src/projectState/CompletedState.java</file>
+            <file>file:/D:/NetBeansProjects/ProjectManagementSystem/src/views/Student_Home.java</file>
+        </group>
     </open-files>
 </project-private>
