@@ -53,6 +53,25 @@ INSERT INTO login VALUES('frank123','frank123');
 ************************Project start************************************************************/
 INSERT INTO PROJECT VALUES('DP02','design patterns','this is a design pattern  project','wallgreens12','2004-05-12','2012-06-12','faculty12');
 
-INSERT INTO PROJECT VALUES('iot1','Smart locking system','Project is a part of iot','mozes12','2015-08-01','2016-08-30','faculty12');
+INSERT INTO PROJECT VALUES('iot1','Smart locking system','Project is a part of iot','mozes12','2015-08-01','2016-09-30','faculty12');
 
 ************************project end************************************************************
+
+****************************project_members****************************************************
+INSERT INTO project_members VALUES('iot1','sam12');
+INSERT INTO project_members VALUES('iot1','john12');
+INSERT INTO project_members VALUES('iot1','tully123');
+INSERT INTO project_members VALUES('iot1','Terry12');
+****************************end project_members****************************************************
+
+*****************************task**************************************************************
+INSERT INTO task VALUES('iotTask2','connect the board','iot1','john12','2015-08-02','2015-08-20');
+INSERT INTO task VALUES('iotTask3','connect to server code','iot1','tully123','2015-08-10','2015-09-25');
+INSERT INTO task VALUES('iotTask4','Create UI','iot1','sam12','2015-09-02','2015-09-20');
+INSERT INTO task VALUES('iotTask5','Documenation','iot1','john12','2015-09-10','2015-09-25');
+INSERT INTO task VALUES('iotTask6','testing','iot1','john12','2015-09-25','2015-08-29');
+INSERT INTO task VALUES('iotTask7','assemble','iot1','sam12','2015-08-20','2015-08-30');
+INSERT INTO task VALUES('iotTask8','assemble2','iot1','Terry12','2015-09-12','2015-09-28');
+
+
+*****************************task end************************************************************
